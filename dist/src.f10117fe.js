@@ -2234,7 +2234,6 @@ var User =
 function () {
   function User(data) {
     this.data = data;
-    this.events = {};
   }
 
   User.prototype.get = function (propName) {
@@ -2243,24 +2242,6 @@ function () {
 
   User.prototype.set = function (update) {
     Object.assign(this.data, update);
-  };
-
-  User.prototype.on = function (eventName, callBack) {
-    var handlers = this.events[eventName] || [];
-    handlers.push(callBack);
-    this.events[eventName] = handlers;
-  };
-
-  User.prototype.trigger = function (eventName) {
-    var handlers = this.events[eventName];
-
-    if (!handlers || handlers.length === 0) {
-      return;
-    }
-
-    handlers.forEach(function (callback) {
-      callback();
-    });
   };
 
   User.prototype.fetch = function () {
@@ -2327,7 +2308,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60970" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65382" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
